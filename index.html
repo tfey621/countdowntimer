@@ -6,14 +6,16 @@
 <title>Dynamic Countdown Timer</title>
 <!-- Load Manrope Font -->
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<!-- Load Bubble Font for Numbers -->
+<link href="https://fonts.googleapis.com/css2?family=Bubbler+One&display=swap" rel="stylesheet">
 <style>
   body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(145deg, #6a1b9a, #388e3c); /* Teamworks purple and green gradient */
-    color: #fff;
+    background: linear-gradient(145deg, #6a1b9a, #388e3c, #000); /* Teamworks purple, green, and small black */
+    color: #000; /* Pure black text */
     height: 100vh;
     font-family: 'Manrope', sans-serif;
     padding: 20px;
@@ -33,30 +35,41 @@
     align-items: center;
     padding: 20px;
     border-radius: 20px;
-    background: linear-gradient(145deg, #8e24aa, #43a047); /* Teamworks purple-green gradient */
+    background: linear-gradient(145deg, #8e24aa, #43a047, #000); /* Teamworks purple-green-black gradient */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    min-width: 150px;
-    max-width: 200px;
+    width: 150px;
+    height: 150px; /* Square shape */
+    position: relative;
   }
 
   .bubble {
-    font-size: 6em; /* Bigger numbers */
+    font-size: 6em; /* Larger bubble numbers */
     padding: 20px;
     color: #fff;
-    text-shadow: 3px 3px 8px #000; /* Enhance visibility */
+    text-shadow: 3px 3px 8px #000;
     margin: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 800;
+    font-family: 'Bubbler One', cursive; /* Bubble-like font */
   }
 
   .title {
     font-size: 1.2em;
     margin-top: 10px;
-    color: #333; /* Soft black for titles */
+    color: #000; /* Pure black for title text */
     font-weight: 400;
     text-align: center;
+  }
+
+  /* Position for Teamworks logo */
+  .logo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    opacity: 0.1; /* Light transparency */
   }
 </style>
 </head>
@@ -65,16 +78,19 @@
     <div class="countdown">
       <div class="bubble" id="days-month">--</div>
       <div class="title">Days Until End of Month</div>
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Teamworks_logo.svg/2560px-Teamworks_logo.svg.png" alt="Teamworks Logo">
     </div>
 
     <div class="countdown">
       <div class="bubble" id="days-quarter">--</div>
       <div class="title">Days Until End of Quarter</div>
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Teamworks_logo.svg/2560px-Teamworks_logo.svg.png" alt="Teamworks Logo">
     </div>
 
     <div class="countdown">
       <div class="bubble" id="days-year">--</div>
       <div class="title">Days Until End of Year</div>
+      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Teamworks_logo.svg/2560px-Teamworks_logo.svg.png" alt="Teamworks Logo">
     </div>
   </div>
 
