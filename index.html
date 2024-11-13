@@ -1,0 +1,243 @@
+
+
+Share
+
+
+You said:
+Hey can you code?
+ChatGPT said:
+ChatGPT
+Yes, I can code! What do you need help with?
+
+
+
+
+
+
+You said:
+I am looking to build a countdown widget to display in notion, can you help with that?
+ChatGPT said:
+ChatGPT
+Yes, I can help you build a countdown widget that can be embedded in Notion! Notion itself doesn't support direct embedding of JavaScript, but we can create a countdown widget using an external tool or website and then embed it into Notion using an iframe or a link.
+
+Here's how we can approach this:
+Create the Countdown Timer Code: We'll use HTML, CSS, and JavaScript to build a simple countdown timer.
+Host the Widget: Use a free platform like CodePen, GitHub Pages, or a similar service to host the countdown timer.
+Embed in Notion: Use the embed block in Notion to display the countdown timer.
+Step 1: Countdown Timer Code
+Here's a simple code snippet for the countdown timer:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f8fa;
+    font-family: Arial, sans-serif;
+  }
+  .countdown {
+    text-align: center;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .countdown h1 {
+    margin-bottom: 20px;
+  }
+  .time {
+    font-size: 2em;
+    margin: 5px 0;
+  }
+</style>
+</head>
+<body>
+  <div class="countdown">
+    <h1>Countdown to Event</h1>
+    <div class="time" id="days">00 Days</div>
+    <div class="time" id="hours">00 Hours</div>
+    <div class="time" id="minutes">00 Minutes</div>
+    <div class="time" id="seconds">00 Seconds</div>
+  </div>
+
+  <script>
+    const targetDate = new Date("2024-12-31T23:59:59").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = `${days} Days`;
+      document.getElementById("hours").textContent = `${hours} Hours`;
+      document.getElementById("minutes").textContent = `${minutes} Minutes`;
+      document.getElementById("seconds").textContent = `${seconds} Seconds`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
+Step 2: Host the Widget
+You can host this code using any of the following:
+
+CodePen: Create a new pen, paste the HTML, CSS, and JS there, and use the embed link.
+GitHub Pages: If you have a GitHub account, create a simple webpage using GitHub Pages.
+Replit: Another quick option to host and get a URL for embedding.
+Step 3: Embed in Notion
+Copy the URL of your hosted countdown widget.
+In Notion, type /embed to add an Embed block.
+Paste the URL and resize it as needed.
+Would you like help hosting the widget, or do you have a preferred platform to use?
+
+
+
+
+
+
+You said:
+Can you create the code  for the countdown to have a blue and black background with a big bubble number showing the days left.  I am hoping to have a countdown widget for days until end of month, days until end of quarter, and days until end of year.
+ChatGPT said:
+ChatGPT
+Got it! I'll create the code for a countdown timer that features a blue and black background with large bubble-style numbers showing the days left. I'll also set up separate timers for the end of the month, the end of the quarter, and the end of the year.
+
+Features:
+Blue and black background for a sleek look.
+Bubble-style numbers for the countdown display.
+Countdown for end of month, end of quarter, and end of year.
+Here’s the HTML, CSS, and JavaScript code:
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #000000, #1a1a1a);
+    color: #fff;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #0d47a1, #1976d2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  .title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #bbdefb;
+  }
+
+  .bubble {
+    font-size: 5em;
+    padding: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #42a5f5, #1e88e5);
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+    margin: 10px 0;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .time-label {
+    font-size: 1em;
+    color: #bbdefb;
+  }
+</style>
+</head>
+<body>
+  <div class="countdown">
+    <div class="title">Days Until End of Month</div>
+    <div class="bubble" id="days-month">--</div>
+  </div>
+
+  <div class="countdown">
+    <div class="title">Days Until End of Quarter</div>
+    <div class="bubble" id="days-quarter">--</div>
+  </div>
+
+  <div class="countdown">
+    <div class="title">Days Until End of Year</div>
+    <div class="bubble" id="days-year">--</div>
+  </div>
+
+  <script>
+    // Helper function to get days difference
+    function getDaysDifference(targetDate) {
+      const now = new Date();
+      const timeDiff = targetDate.getTime() - now.getTime();
+      return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+    }
+
+    // Calculate end of month date
+    function getEndOfMonth() {
+      const now = new Date();
+      return new Date(now.getFullYear(), now.getMonth() + 1, 0); // Last day of current month
+    }
+
+    // Calculate end of quarter date
+    function getEndOfQuarter() {
+      const now = new Date();
+      const currentMonth = now.getMonth();
+      const quarterEndMonth = currentMonth + (2 - (currentMonth % 3)); // End of current quarter
+      return new Date(now.getFullYear(), quarterEndMonth + 1, 0);
+    }
+
+    // Calculate end of year date
+    function getEndOfYear() {
+      const now = new Date();
+      return new Date(now.getFullYear(), 11, 31); // December 31
+    }
+
+    // Update the countdown timers
+    function updateCountdowns() {
+      const daysUntilMonthEnd = getDaysDifference(getEndOfMonth());
+      const daysUntilQuarterEnd = getDaysDifference(getEndOfQuarter());
+      const daysUntilYearEnd = getDaysDifference(getEndOfYear());
+
+      document.getElementById("days-month").textContent = daysUntilMonthEnd;
+      document.getElementById("days-quarter").textContent = daysUntilQuarterEnd;
+      document.getElementById("days-year").textContent = daysUntilYearEnd;
+    }
+
+    // Initial update and set interval to refresh every 24 hours
+    updateCountdowns();
+    setInterval(updateCountdowns, 1000 * 60 * 60); // Refresh every hour
+  </script>
+</body>
+</html>
