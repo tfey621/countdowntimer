@@ -14,8 +14,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(145deg, #6a1b9a, #388e3c, #000); /* Teamworks purple, green, and small black */
-    color: #000; /* Pure black text */
+    background: #000; /* Black background */
+    color: #fff; /* White text */
     height: 100vh;
     font-family: 'Manrope', sans-serif;
     padding: 20px;
@@ -35,7 +35,7 @@
     align-items: center;
     padding: 20px;
     border-radius: 20px;
-    background: linear-gradient(145deg, #8e24aa, #43a047, #000); /* Teamworks purple-green-black gradient */
+    background: linear-gradient(145deg, #6a1b9a, #1e3a8a); /* Teamworks purple and blue */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     width: 150px;
     height: 150px; /* Square shape */
@@ -58,18 +58,9 @@
   .title {
     font-size: 1.2em;
     margin-top: 10px;
-    color: #000; /* Pure black for title text */
+    color: #fff; /* White for title text */
     font-weight: 400;
     text-align: center;
-  }
-
-  /* Position for Teamworks logo */
-  .logo {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 40px;
-    opacity: 0.1; /* Light transparency */
   }
 </style>
 </head>
@@ -78,19 +69,16 @@
     <div class="countdown">
       <div class="bubble" id="days-month">--</div>
       <div class="title">Days Until End of Month</div>
-      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Teamworks_logo.svg/2560px-Teamworks_logo.svg.png" alt="Teamworks Logo">
     </div>
 
     <div class="countdown">
       <div class="bubble" id="days-quarter">--</div>
       <div class="title">Days Until End of Quarter</div>
-      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Teamworks_logo.svg/2560px-Teamworks_logo.svg.png" alt="Teamworks Logo">
     </div>
 
     <div class="countdown">
       <div class="bubble" id="days-year">--</div>
       <div class="title">Days Until End of Year</div>
-      <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Teamworks_logo.svg/2560px-Teamworks_logo.svg.png" alt="Teamworks Logo">
     </div>
   </div>
 
