@@ -64,7 +64,7 @@
   }
 
   .quote-container {
-    margin-top: 40px; /* Space between countdown and quote */
+    margin-top: 60px; /* Increased space between countdown and quote */
     font-size: 1.2em; /* Quote font size */
     font-style: italic;
     text-align: center;
@@ -149,22 +149,53 @@
       document.getElementById('quote').textContent = randomQuote;
     }
 
-    // Update countdown and quote every 24 hours
-    setInterval(function() {
-      // Update the countdown timers
-      const endOfMonth = getEndOfMonth();
-      const endOfQuarter = getEndOfQuarter();
-      const endOfYear = getEndOfYear();
-      document.getElementById('days-month').textContent = getDaysDifference(endOfMonth);
-      document.getElementById('days-quarter').textContent = getDaysDifference(endOfQuarter);
-      document.getElementById('days-year').textContent = getDaysDifference(endOfYear);
-      
-      // Display a random quote
-      displayQuote();
-    }, 86400000); // Update once every 24 hours
+    // Helper function to get days difference
+    function getDaysDifference(targetDate) {
+      const now = new Date();
+      const timeDiff = targetDate.getTime() - now.getTime();
+      return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24))); // Return days remaining
+    }
 
-    // Initial setup
+    // Calculate end of month date
+    function getEndOfMonth() {
+      const now = new Date();
+      return new Date(now.getFullYear(), now.getMonth() + 1, 0); // Last day of current month
+    }
+
+    // Calculate end of quarter date
+    function getEndOfQuarter() {
+      const now = new Date();
+      const currentMonth = now.getMonth();
+      const quarterEndMonth = currentMonth + (2 - (currentMonth % 3)); // End of current quarter
+      return new Date(now.getFullYear(), quarterEndMonth + 1, 0); // Last day of quarter
+    }
+
+    // Calculate end of year date
+    function getEndOfYear() {
+      const now = new Date();
+      return new Date(now.getFullYear(), 11, 31); // December 31st
+    }
+
+    // Function to update countdowns
+    function updateCountdowns() {
+      const daysToEndOfMonth = getDaysDifference(getEndOfMonth());
+      const daysToEndOfQuarter = getDaysDifference(getEndOfQuarter());
+      const daysToEndOfYear = getDaysDifference(getEndOfYear());
+
+      document.getElementById('days-month').textContent = daysToEndOfMonth;
+      document.getElementById('days-quarter').textContent = daysToEndOfQuarter;
+      document.getElementById('days-year').textContent = daysToEndOfYear;
+    }
+
+    // Display initial quote and countdown
     displayQuote();
+    updateCountdowns();
+
+    // Update countdowns every day
+    setInterval(() => {
+      displayQuote();
+      updateCountdowns();
+    }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
   </script>
 </body>
 </html>
