@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dynamic Countdown Timer with Motivational Quote</title>
+<title>Dynamic Countdown Timer</title>
 <!-- Load Manrope Font -->
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 <!-- Load Bubble Font for Numbers -->
@@ -63,18 +63,6 @@
     text-align: center;
   }
 
-  .quote-container {
-    margin-top: 40px; /* Increased gap between quote and countdown */
-    font-size: 1em; /* Smaller quote size */
-    color: #fff;
-    text-align: center;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 400;
-    max-width: 80%; /* To make the quote container responsive */
-    margin-left: auto;
-    margin-right: auto;
-    font-style: italic; /* Italicized quote text */
-  }
 </style>
 </head>
 <body>
@@ -93,10 +81,6 @@
       <div class="bubble" id="days-year">--</div>
       <div class="title">Days Until End of Year</div>
     </div>
-  </div>
-
-  <div class="quote-container" id="quote">
-    <!-- Motivational quote will be injected here -->
   </div>
 
   <script>
@@ -127,75 +111,15 @@
       return new Date(now.getFullYear(), 11, 31); // December 31
     }
 
-    // Array of motivational quotes from athletes/coaches (45 quotes)
-    const quotes = [
-      "“The harder you work, the harder it is to surrender.” — Vince Lombardi",
-      "“Success is no accident. It is hard work, perseverance, learning, studying, sacrifice, and most of all, love of what you are doing or learning to do.” — Pele",
-      "“I’ve missed more than 9,000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life. And that is why I succeed.” — Michael Jordan",
-      "“It's not whether you get knocked down, it's whether you get up.” — Vince Lombardi",
-      "“You can’t win unless you learn how to lose.” — Kareem Abdul-Jabbar",
-      "“The only way to prove that you’re a good sport is to lose.” — Ernie Banks",
-      "“A champion is afraid of losing. Everyone else is afraid of winning.” — Billie Jean King",
-      "“You miss 100% of the shots you don’t take.” — Wayne Gretzky",
-      "“Do not let what you cannot do interfere with what you can do.” — John Wooden",
-      "“The more difficult the victory, the greater the happiness in winning.” — Pele",
-      "“It’s not the will to win that matters—everyone has that. It’s the will to prepare to win that matters.” — Paul “Bear” Bryant",
-      "“I never really felt that I deserved to be the best player in the world. I was just trying to get better every day.” — Michael Jordan",
-      "“When you want to succeed as bad as you want to breathe, then you’ll be successful.” — Eric Thomas",
-      "“You can't measure success by what you accomplish, you can only measure it by what you overcome.” — Coach K",
-      "“Failure is simply the opportunity to begin again, this time more intelligently.” — Henry Ford",
-      "“Champions keep playing until they get it right.” — Billie Jean King",
-      "“Hard work beats talent when talent doesn't work hard.” — Tim Notke",
-      "“Great things never come from comfort zones.” — Anonymous",
-      "“Success is not final, failure is not fatal: It is the courage to continue that counts.” — Winston Churchill",
-      "“The only way to do great work is to love what you do.” — Steve Jobs",
-      "“I find that the harder I work, the more luck I seem to have.” — Thomas Jefferson",
-      "“You miss 100% of the shots you don’t take.” — Wayne Gretzky",
-      "“Excellence is the gradual result of always striving to do better.” — Pat Riley",
-      "“It’s not about being the best. It’s about being better than you were yesterday.” — Unknown",
-      "“Persistence can change failure into extraordinary achievement.” — Matt Biondi",
-      "“The greatest glory in living lies not in never falling, but in rising every time we fall.” — Nelson Mandela",
-      "“Success usually comes to those who are too busy to be looking for it.” — Henry David Thoreau",
-      "“The road to success and the road to failure are almost exactly the same.” — Colin R. Davis",
-      "“I don't count my sit-ups. I only start counting when it starts hurting because they're the only ones that count.” — Muhammad Ali",
-      "“I can accept failure, everyone fails at something. But I can't accept not trying.” — Michael Jordan",
-      "“You don’t have to be great to start, but you have to start to be great.” — Zig Ziglar",
-      "“You never fail until you stop trying.” — Albert Einstein",
-      "“It always seems impossible until it's done.” — Nelson Mandela",
-      "“Act as if what you do makes a difference. It does.” — William James",
-      "“If you’re going through hell, keep going.” — Winston Churchill",
-      "“Believe you can and you're halfway there.” — Theodore Roosevelt",
-      "“Don’t stop when you’re tired. Stop when you’re done.” — Unknown",
-      "“You are never too old to set another goal or to dream a new dream.” — C.S. Lewis",
-      "“The future depends on what you do today.” — Mahatma Gandhi",
-      "“The only limit to our realization of tomorrow is our doubts of today.” — Franklin D. Roosevelt",
-      "“Whether you think you can or you think you can’t, you’re right.” — Henry Ford",
-      "“It does not matter how slowly you go as long as you do not stop.” — Confucius",
-      "“Everything you’ve ever wanted is on the other side of fear.” — George Addair"
-    ];
-
-    // Function to randomly display a quote from the array
-    function displayQuote() {
-      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById('quote').textContent = randomQuote;
-    }
-
-    // Update countdown and quote every 24 hours
+    // Update countdown timers
     setInterval(function() {
-      // Update the countdown timers
       const endOfMonth = getEndOfMonth();
       const endOfQuarter = getEndOfQuarter();
       const endOfYear = getEndOfYear();
       document.getElementById('days-month').textContent = getDaysDifference(endOfMonth);
       document.getElementById('days-quarter').textContent = getDaysDifference(endOfQuarter);
       document.getElementById('days-year').textContent = getDaysDifference(endOfYear);
-      
-      // Display a random quote
-      displayQuote();
     }, 86400000); // Update once every 24 hours
-
-    // Initial setup
-    displayQuote();
   </script>
 </body>
 </html>
