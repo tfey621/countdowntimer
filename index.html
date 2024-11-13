@@ -63,6 +63,16 @@
     text-align: center;
   }
 
+  .quote-container {
+    margin-top: 40px; /* Space between countdown and quote */
+    font-size: 1.2em; /* Quote font size */
+    font-style: italic;
+    text-align: center;
+    color: #fff; /* White text for quote */
+    max-width: 80%; /* Limit the width of the quote to prevent overflow */
+    line-height: 1.5;
+  }
+
 </style>
 </head>
 <body>
@@ -83,51 +93,78 @@
     </div>
   </div>
 
+  <div class="quote-container" id="quote">“Success is the sum of small efforts, repeated day in and day out.” — Robert Collier</div>
+
   <script>
-    // Helper function to get days difference
-    function getDaysDifference(targetDate) {
-      const now = new Date();
-      const timeDiff = targetDate.getTime() - now.getTime();
-      return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24))); // Return days remaining
+    // Array of motivational quotes
+    const quotes = [
+      "“Success is the sum of small efforts, repeated day in and day out.” — Robert Collier",
+      "“The only way to do great work is to love what you do.” — Steve Jobs",
+      "“You miss 100% of the shots you don't take.” — Wayne Gretzky",
+      "“The future depends on what you do today.” — Mahatma Gandhi",
+      "“The only limit to our realization of tomorrow is our doubts of today.” — Franklin D. Roosevelt",
+      "“Whether you think you can or you think you can’t, you’re right.” — Henry Ford",
+      "“It does not matter how slowly you go as long as you do not stop.” — Confucius",
+      "“Everything you’ve ever wanted is on the other side of fear.” — George Addair",
+      "“Don’t watch the clock; do what it does. Keep going.” — Sam Levenson",
+      "“The only place where success comes before work is in the dictionary.” — Vidal Sassoon",
+      "“A goal is not always meant to be reached; it often serves simply as something to aim at.” — Bruce Lee",
+      "“Do what you can with all you have, wherever you are.” — Theodore Roosevelt",
+      "“Opportunities don't happen. You create them.” — Chris Grosser",
+      "“Success usually comes to those who are too busy to be looking for it.” — Henry David Thoreau",
+      "“I find that the harder I work, the more luck I seem to have.” — Thomas Jefferson",
+      "“The road to success and the road to failure are almost exactly the same.” — Colin R. Davis",
+      "“You don't have to be great to start, but you have to start to be great.” — Zig Ziglar",
+      "“Success is not final, failure is not fatal: It is the courage to continue that counts.” — Winston Churchill",
+      "“If you are not willing to risk the usual, you will have to settle for the ordinary.” — Jim Rohn",
+      "“Don’t be afraid to give up the good to go for the great.” — John D. Rockefeller",
+      "“I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.” — Maya Angelou",
+      "“It always seems impossible until it’s done.” — Nelson Mandela",
+      "“Keep your eyes on the stars, and your feet on the ground.” — Theodore Roosevelt",
+      "“The only way to achieve the impossible is to believe it is possible.” — Charles Kingsleigh",
+      "“Nothing is impossible. The word itself says ‘I’m possible!’” — Audrey Hepburn",
+      "“Do one thing every day that scares you.” — Eleanor Roosevelt",
+      "“The best way to predict your future is to create it.” — Abraham Lincoln",
+      "“What you get by achieving your goals is not as important as what you become by achieving your goals.” — Zig Ziglar",
+      "“Success is not how high you have climbed, but how you make a positive difference to the world.” — Roy T. Bennett",
+      "“Your limitation—it’s only your imagination.” — Unknown",
+      "“Dream it. Wish it. Do it.” — Unknown",
+      "“Believe you can and you're halfway there.” — Theodore Roosevelt",
+      "“The harder you work for something, the greater you’ll feel when you achieve it.” — Unknown",
+      "“Dream bigger. Do bigger.” — Unknown",
+      "“Don’t stop when you’re tired. Stop when you’re done.” — Unknown",
+      "“Wake up with determination. Go to bed with satisfaction.” — Unknown",
+      "“Great things never come from comfort zones.” — Unknown",
+      "“Dream it. Believe it. Build it.” — Unknown",
+      "“Success doesn’t just find you. You have to go out and get it.” — Unknown",
+      "“The key to success is to focus on goals, not obstacles.” — Unknown",
+      "“The only way to do great work is to love what you do.” — Steve Jobs",
+      "“Success is walking from failure to failure with no loss of enthusiasm.” — Winston Churchill",
+      "“Motivation is what gets you started. Habit is what keeps you going.” — Jim Ryun"
+    ];
+
+    // Function to randomly display a quote from the array
+    function displayQuote() {
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('quote').textContent = randomQuote;
     }
 
-    // Calculate end of month date
-    function getEndOfMonth() {
-      const now = new Date();
-      return new Date(now.getFullYear(), now.getMonth() + 1, 0); // Last day of current month
-    }
-
-    // Calculate end of quarter date
-    function getEndOfQuarter() {
-      const now = new Date();
-      const currentMonth = now.getMonth();
-      const quarterEndMonth = currentMonth + (2 - (currentMonth % 3)); // End of current quarter
-      return new Date(now.getFullYear(), quarterEndMonth + 1, 0); // Last day of quarter
-    }
-
-    // Calculate end of year date
-    function getEndOfYear() {
-      const now = new Date();
-      return new Date(now.getFullYear(), 11, 31); // December 31
-    }
-
-    // Function to update countdown timers
-    function updateCountdown() {
+    // Update countdown and quote every 24 hours
+    setInterval(function() {
+      // Update the countdown timers
       const endOfMonth = getEndOfMonth();
       const endOfQuarter = getEndOfQuarter();
       const endOfYear = getEndOfYear();
-
       document.getElementById('days-month').textContent = getDaysDifference(endOfMonth);
       document.getElementById('days-quarter').textContent = getDaysDifference(endOfQuarter);
       document.getElementById('days-year').textContent = getDaysDifference(endOfYear);
-    }
+      
+      // Display a random quote
+      displayQuote();
+    }, 86400000); // Update once every 24 hours
 
-    // Initial countdown update
-    updateCountdown();
-
-    // Update countdown every 24 hours
-    setInterval(updateCountdown, 86400000); // 86400000 ms = 1 day
-
+    // Initial setup
+    displayQuote();
   </script>
 </body>
 </html>
