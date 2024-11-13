@@ -12,7 +12,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(145deg, #00264D, #003366);
+    background: linear-gradient(145deg, #6a1b9a, #388e3c); /* Teamworks purple and green gradient */
     color: #fff;
     height: 100vh;
     font-family: 'Manrope', sans-serif;
@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     margin-top: 20px;
   }
 
@@ -31,54 +31,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
     border-radius: 20px;
-    background: linear-gradient(145deg, #004080, #0059b3);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(145deg, #8e24aa, #43a047); /* Teamworks purple-green gradient */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     min-width: 150px;
+    max-width: 200px;
+  }
+
+  .bubble {
+    font-size: 6em; /* Bigger numbers */
+    padding: 20px;
+    color: #fff;
+    text-shadow: 3px 3px 8px #000; /* Enhance visibility */
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
   }
 
   .title {
     font-size: 1.2em;
-    margin-bottom: 10px;
-    color: #FFC107; /* Accent yellow for titles */
-    font-weight: 600;
+    margin-top: 10px;
+    color: #333; /* Soft black for titles */
+    font-weight: 400;
     text-align: center;
-  }
-
-  .bubble {
-    font-size: 3em;
-    padding: 20px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #0073E6, #004080);
-    color: #fff;
-    text-shadow: 2px 2px 5px #000;
-    margin: 10px 0;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    font-weight: 800;
   }
 </style>
 </head>
 <body>
   <div class="countdown-container">
     <div class="countdown">
-      <div class="title">Days Until End of Month</div>
       <div class="bubble" id="days-month">--</div>
+      <div class="title">Days Until End of Month</div>
     </div>
 
     <div class="countdown">
-      <div class="title">Days Until End of Quarter</div>
       <div class="bubble" id="days-quarter">--</div>
+      <div class="title">Days Until End of Quarter</div>
     </div>
 
     <div class="countdown">
-      <div class="title">Days Until End of Year</div>
       <div class="bubble" id="days-year">--</div>
+      <div class="title">Days Until End of Year</div>
     </div>
   </div>
 
