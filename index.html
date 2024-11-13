@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dynamic Countdown Timer</title>
+<title>Dynamic Countdown Timer with Motivational Quote</title>
 <!-- Load Manrope Font -->
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 <!-- Load Bubble Font for Numbers -->
@@ -62,6 +62,15 @@
     font-weight: 400;
     text-align: center;
   }
+
+  .quote-container {
+    margin-top: 30px;
+    font-size: 1em; /* Smaller quote size */
+    color: #fff;
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+  }
 </style>
 </head>
 <body>
@@ -80,6 +89,10 @@
       <div class="bubble" id="days-year">--</div>
       <div class="title">Days Until End of Year</div>
     </div>
+  </div>
+
+  <div class="quote-container" id="quote">
+    <!-- Motivational quote will be injected here -->
   </div>
 
   <script>
@@ -110,6 +123,24 @@
       return new Date(now.getFullYear(), 11, 31); // December 31
     }
 
+    // Array of motivational quotes from athletes/coaches
+    const quotes = [
+      "“The harder you work, the harder it is to surrender.” — Vince Lombardi",
+      "“Success is no accident. It is hard work, perseverance, learning, studying, sacrifice, and most of all, love of what you are doing or learning to do.” — Pele",
+      "“I’ve missed more than 9,000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life. And that is why I succeed.” — Michael Jordan",
+      "“It's not whether you get knocked down, it's whether you get up.” — Vince Lombardi",
+      "“You can’t win unless you learn how to lose.” — Kareem Abdul-Jabbar",
+      "“The only way to prove that you’re a good sport is to lose.” — Ernie Banks"
+    ];
+
+    // Function to set the motivational quote for the day
+    function setDailyQuote() {
+      const today = new Date();
+      const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+      const quoteIndex = dayOfYear % quotes.length; // Cycle through quotes
+      document.getElementById("quote").textContent = quotes[quoteIndex];
+    }
+
     // Update the countdown timers every second
     function updateCountdowns() {
       const daysUntilMonthEnd = getDaysDifference(getEndOfMonth());
@@ -124,6 +155,7 @@
     // Initial update and set interval to refresh every second
     updateCountdowns();
     setInterval(updateCountdowns, 1000); // Update every second
+    setDailyQuote(); // Set the quote for the day
   </script>
 </body>
 </html>
