@@ -43,8 +43,8 @@
   }
 
   .bubble {
-    font-size: 4.5em; /* Smaller bubble font size */
-    padding: 10px; /* Reduced padding */
+    font-size: 4.5em; /* Bubble font size */
+    padding: 10px; /* Padding for bubble */
     color: #fff;
     text-shadow: 2px 2px 6px #000;
     margin: 5px 0;
@@ -56,7 +56,7 @@
   }
 
   .title {
-    font-size: 1em; /* Smaller title font size */
+    font-size: 1em; /* Title font size */
     margin-top: 5px;
     color: #fff; /* White for title text */
     font-weight: 400;
@@ -88,7 +88,7 @@
     function getDaysDifference(targetDate) {
       const now = new Date();
       const timeDiff = targetDate.getTime() - now.getTime();
-      return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+      return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24))); // Return days remaining
     }
 
     // Calculate end of month date
@@ -102,7 +102,7 @@
       const now = new Date();
       const currentMonth = now.getMonth();
       const quarterEndMonth = currentMonth + (2 - (currentMonth % 3)); // End of current quarter
-      return new Date(now.getFullYear(), quarterEndMonth + 1, 0);
+      return new Date(now.getFullYear(), quarterEndMonth + 1, 0); // Last day of quarter
     }
 
     // Calculate end of year date
@@ -111,15 +111,23 @@
       return new Date(now.getFullYear(), 11, 31); // December 31
     }
 
-    // Update countdown timers
-    setInterval(function() {
+    // Function to update countdown timers
+    function updateCountdown() {
       const endOfMonth = getEndOfMonth();
       const endOfQuarter = getEndOfQuarter();
       const endOfYear = getEndOfYear();
+
       document.getElementById('days-month').textContent = getDaysDifference(endOfMonth);
       document.getElementById('days-quarter').textContent = getDaysDifference(endOfQuarter);
       document.getElementById('days-year').textContent = getDaysDifference(endOfYear);
-    }, 86400000); // Update once every 24 hours
+    }
+
+    // Initial countdown update
+    updateCountdown();
+
+    // Update countdown every 24 hours
+    setInterval(updateCountdown, 86400000); // 86400000 ms = 1 day
+
   </script>
 </body>
 </html>
