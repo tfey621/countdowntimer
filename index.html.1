@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Countdown Timer</title>
+<!-- Load Manrope Font -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #000000, #1a1a1a);
+    color: #fff;
+    height: 100vh;
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #0d47a1, #1976d2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  .title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #bbdefb;
+    font-weight: 600;
+  }
+
+  .bubble {
+    font-size: 5em;
+    padding: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #42a5f5, #1e88e5);
+    color: #fff;
+    text-shadow: 2px 2px 5px #000;
+    margin: 10px 0;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    font-weight: 800;
+  }
+
+  .time-label {
+    font-size: 1em;
+    color: #bbdefb;
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+  <div class="countdown">
+    <div class="title">Days Until End of Month</div>
+    <div class="bubble" id="days-month">--</div>
+  </div>
+
+  <div class="countdown">
+    <div class="title">Days Until End of Quarter</div>
+    <div class="bubble" id="days-quarter">--</div>
+  </div>
+
+  <div class="countdown">
+    <div class="title">Days Until End of Year</div>
+    <div class="bubble" id="days-year">--</div>
+  </div>
+
+  <script>
+    // Helper function to get days difference
+    function getDaysDifference(targetDate) {
+      const now = new Date();
+      const timeDiff = targetDate.getTime() - now.getTime();
+      return Math.max(0, Math.ceil(timeDiff / (1000 * 60 * 60 * 24)));
+    }
+
+    // Calculate end of month date
+    function getEndOfMonth() {
+      const now = new Date();
+      return new Date(now.getFullYear(), now.getMonth() + 1, 0); // Last day of current month
+    }
+
+    // Calculate end of quarter date
+    function getEndOfQuarter() {
+      const now = new Date();
+      const currentMonth = now.getMonth();
+      const quarterEndMonth = currentMonth + (2 - (currentMonth % 3)); // End of current quarter
+      return new Date(now.getFullYear(), quarterEndMonth + 1, 0);
+    }
+
+    // Calculate end of year date
+    function getEndOfYear() {
+      const now = new Date();
+      return new Date(now.getFullYear(), 11, 31); // December 31
+    }
+
+    // Update the countdown timers every second
+    function updateCountdowns() {
+      const daysUntilMonthEnd = getDaysDifference(getEndOfMonth());
+      const daysUntilQuarterEnd = getDaysDifference(getEndOfQuarter());
+      const daysUntilYearEnd = getDaysDifference(getEndOfYear());
+
+      document.getElementById("days-month").textContent = daysUntilMonthEnd;
+      document.getElementById("days-quarter").textContent = daysUntilQuarterEnd;
+      document.getElementById("days-year").textContent = daysUntilYearEnd;
+    }
+
+    // Initial update and set interval to refresh every second
+    updateCountdowns();
+    setInterval(updateCountdowns, 1000); // Update every second
+  </script>
+</body>
+</html>
